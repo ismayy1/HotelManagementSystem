@@ -1,6 +1,6 @@
-package repository;
+package com.tpe.repository;
 
-import model.Hotel;
+import com.tpe.model.Hotel;
 
 // step 13 a: Create Hotel
 public interface HotelRepository {

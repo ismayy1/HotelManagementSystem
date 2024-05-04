@@ -1,9 +1,9 @@
-package main;
+package com.tpe.main;
 
-import repository.HotelRepository;
-import repository.HotelRepositoryImplement;
-import service.HotelService;
-import service.HotelServiceImplementation;
+import com.tpe.repository.HotelRepository;
+import com.tpe.repository.HotelRepositoryImplement;
+import com.tpe.service.HotelService;
+import com.tpe.service.HotelServiceImplementation;
 
 import java.util.Scanner;
 

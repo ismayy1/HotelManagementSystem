@@ -1,6 +1,6 @@
-package service;
+package com.tpe.service;
 
-import model.Hotel;
+import com.tpe.model.Hotel;
 
 public interface HotelService {
 

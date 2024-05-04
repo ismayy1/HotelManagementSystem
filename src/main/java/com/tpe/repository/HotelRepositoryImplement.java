@@ -1,7 +1,7 @@
-package repository;
+package com.tpe.repository;
 
-import config.HibernateUtils;
-import model.Hotel;
+import com.tpe.config.HibernateUtils;
+import com.tpe.model.Hotel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 

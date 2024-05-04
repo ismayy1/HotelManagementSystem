@@ -1,4 +1,4 @@
-package model;
+package com.tpe.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;

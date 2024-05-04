@@ -1,7 +1,7 @@
-package config;
+package com.tpe.config;
 
-import model.Hotel;
-import model.Room;
+import com.tpe.model.Hotel;
+import com.tpe.model.Room;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,7 +14,7 @@ public class HibernateUtils {
     static {
         try {
             Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
-                    .addAnnotatedClass(Hotel.class).addAnnotatedClass(Room.class);
+//                    .addAnnotatedClass(Hotel.class).addAnnotatedClass(Room.class);    // because we used mapping in hibernate.cfg.xml file, we no longer need to use this .addAnnotatedClass()
             sessionFactory = configuration.buildSessionFactory();
         } catch (Throwable throwable) {
             System.out.println("Initialize SessionFactory Create Failed!.." + throwable);
