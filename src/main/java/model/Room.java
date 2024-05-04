@@ -1,9 +1,6 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table (name = "tbl_room")
@@ -15,6 +12,9 @@ public class Room {
     private String number;
     @Column (nullable = false)
     private int capacity;
+
+    @ManyToOne
+    private Hotel hotel;
 
     public Room() {}
 

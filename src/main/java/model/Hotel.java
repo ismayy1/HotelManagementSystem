@@ -57,6 +57,7 @@ public class Hotel {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
+                ", rooms=" + rooms +
                 '}';
     }
 }
