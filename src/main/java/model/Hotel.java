@@ -1,9 +1,8 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //step 9: Hotel Entity and Room
 @Entity
@@ -18,6 +17,9 @@ public class Hotel {
     @Column (nullable = false, length = 44)
     private String location;
 
+    @OneToMany
+    private List<Room> rooms = new ArrayList<>();
+
     public Hotel() {}
 
     public Hotel(String name, String location) {
@@ -25,6 +27,12 @@ public class Hotel {
         this.location = location;
     }
 
+    public List<Room> getRooms() {
+        return rooms;
+    }
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
     public Long getId() {
         return id;
     }
