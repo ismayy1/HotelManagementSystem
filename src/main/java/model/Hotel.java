@@ -17,7 +17,7 @@ public class Hotel {
     @Column (nullable = false, length = 44)
     private String location;
 
-    @OneToMany
+    @OneToMany (mappedBy = "hotel")
     private List<Room> rooms = new ArrayList<>();
 
     public Hotel() {}

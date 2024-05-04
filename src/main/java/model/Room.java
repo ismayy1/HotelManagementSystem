@@ -14,6 +14,7 @@ public class Room {
     private int capacity;
 
     @ManyToOne
+    @JoinColumn (name = "hotel_id", nullable = false)
     private Hotel hotel;
 
     public Room() {}
@@ -24,6 +25,12 @@ public class Room {
         this.capacity = capacity;
     }
 
+    public Hotel getHotel() {
+        return hotel;
+    }
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
     public Long getId() {
         return id;
     }
@@ -48,6 +55,7 @@ public class Room {
                 "id=" + id +
                 ", number='" + number + '\'' +
                 ", capacity=" + capacity +
+                ", hotel=" + hotel +
                 '}';
     }
 }
