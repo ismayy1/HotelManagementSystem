@@ -23,6 +23,8 @@
 
         <property name="format_sql">true</property>
 
+<!--        These following two lines are equal to
+.addAnnotatedClass(Hotel.class).addAnnotatedClass(Room.class); line in 'HibernateUtils.java class-->
         <mapping class="main.java.model.Hotel"></mapping>
         <mapping class="main.java.model.Room"></mapping>
 

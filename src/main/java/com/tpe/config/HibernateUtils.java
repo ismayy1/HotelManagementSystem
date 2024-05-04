@@ -13,7 +13,7 @@ public class HibernateUtils {
 
     static {
         try {
-            Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
+            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 //                    .addAnnotatedClass(Hotel.class).addAnnotatedClass(Room.class);    // because we used mapping in hibernate.cfg.xml file, we no longer need to use this .addAnnotatedClass()
             sessionFactory = configuration.buildSessionFactory();
         } catch (Throwable throwable) {
