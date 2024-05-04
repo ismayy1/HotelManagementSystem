@@ -5,7 +5,7 @@ public class Main {
 
         // step 11: Call HMS Service Class to display the Menu
 
-
+        HotelManagementSystemServiceClass.displayMenuHotelManagementSystem();
 
     }
 }

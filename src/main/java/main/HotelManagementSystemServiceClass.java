@@ -42,7 +42,8 @@ public class HotelManagementSystemServiceClass {
                     System.out.println("4. Display Reservation Operation");
                     break;
                 case 5:
-                    System.out.println("5. Display Exit Operation");
+                    exit = true;
+                    System.out.println("Good Bye!!!");
                     break;
                 default:
                     System.out.println("Invalid Choice. Please Try Again Later!");
