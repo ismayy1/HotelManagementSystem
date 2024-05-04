@@ -1,5 +1,10 @@
 package main;
 
+import repository.HotelRepository;
+import repository.HotelRepositoryImplement;
+import service.HotelService;
+import service.HotelServiceImplementation;
+
 import java.util.Scanner;
 
 //step 10: Create HMS Service Class we need to Call this class in Main Class
@@ -7,7 +12,12 @@ public class HotelManagementSystemServiceClass {
 
     private static Scanner scanner;
 
+    //create an instance of hotelRepository and hotelService
+
     public static void displayMenuHotelManagementSystem() {
+
+        HotelRepository hotelRepository = new HotelRepositoryImplement();
+        HotelService hotelService = new HotelServiceImplementation(hotelRepository);
 
         // create Scanner for the user input
         scanner = new Scanner(System.in);
@@ -31,6 +41,7 @@ public class HotelManagementSystemServiceClass {
             switch (choice) {
                 case 1:
                     System.out.println("1. Display Hotel Operation");
+                    displayHotelOperationMenu(hotelService);
                     break;
                 case 2:
                     System.out.println("2. Display Room Operation");
@@ -54,7 +65,7 @@ public class HotelManagementSystemServiceClass {
     }
 
     // step 13 [a-b-c-d]
-    private static void displayHotelOperationMenu() {
+    private static void displayHotelOperationMenu(HotelService hotelService) {
 
         scanner = new Scanner(System.in);
         boolean exit = false;
@@ -76,6 +87,7 @@ public class HotelManagementSystemServiceClass {
             switch (choice) {
                 case 1:
                     System.out.println("Add new Hotel: ");
+                    hotelService.saveHotel();
                     break;
                 case 2:
                     System.out.println("2. Find Hotel By ID");
