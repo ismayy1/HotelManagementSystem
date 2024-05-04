@@ -23,5 +23,7 @@
 
         <property name="format_sql">true</property>
 
+<!--        <mapping class="main.java.model.Hotel"></mapping>-->
+
     </session-factory>
 </hibernate-configuration>

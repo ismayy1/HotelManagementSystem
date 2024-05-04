@@ -1,5 +1,7 @@
 package config;
 
+import model.Hotel;
+import model.Room;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,7 +13,8 @@ public class HibernateUtils {
 
     static {
         try {
-            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+            Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(Hotel.class).addAnnotatedClass(Room.class);
             sessionFactory = configuration.buildSessionFactory();
         } catch (Throwable throwable) {
             System.out.println("Initialize SessionFactory Create Failed!.." + throwable);
