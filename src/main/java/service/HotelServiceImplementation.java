@@ -34,6 +34,17 @@ public class HotelServiceImplementation implements HotelService {
 
         System.out.println("Enter the hotel id:");
         hotel.setId(scanner.nextLong());
+        scanner.nextLine();
+
+        System.out.println("Enter the hotel name:");
+        hotel.setName(scanner.nextLine());
+
+        System.out.println("Enter the hotel Location:");
+        hotel.setLocation(scanner.nextLine());
+
+        // save the hotel
+        hotelRepository.saveHotel(hotel);
+        System.out.println("Hotel Saved successfully to the DataBase. Hotel Id: " + hotel.getId());
 
         return null;
     }
