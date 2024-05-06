@@ -13,7 +13,6 @@ public class HotelManagementSystemServiceClass {
     private static Scanner scanner;
 
     //create an instance of hotelRepository and hotelService
-
     public static void displayMenuHotelManagementSystem() {
 
         HotelRepository hotelRepository = new HotelRepositoryImplement();
@@ -33,7 +32,7 @@ public class HotelManagementSystemServiceClass {
             System.out.println("4. Reservation Operation");
             System.out.println("5. Exit Operation");
 
-            System.out.println("Enter you Selection Option Number:");
+            System.out.println("Enter you Selection Number:");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // it'll consume NewLine
