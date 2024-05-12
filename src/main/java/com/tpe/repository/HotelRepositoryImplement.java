@@ -7,6 +7,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class HotelRepositoryImplement implements HotelRepository {
 
     // step 13 b: override method
@@ -62,6 +64,13 @@ public class HotelRepositoryImplement implements HotelRepository {
             e.printStackTrace();
         }
 
+    }
+
+    // step 16 B: display all hotels
+    @Override
+    public List<Hotel> findAllHotels() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        return session.createQuery("FROM Hotel", Hotel.class).getResultList();
     }
 
 }

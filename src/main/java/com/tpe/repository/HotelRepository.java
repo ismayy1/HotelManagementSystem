@@ -2,6 +2,8 @@ package com.tpe.repository;
 
 import com.tpe.model.Hotel;
 
+import java.util.List;
+
 // step 13 a: Create Hotel
 public interface HotelRepository {
 
@@ -13,5 +15,8 @@ public interface HotelRepository {
 
     // step 15 a: delete hotel by id
     void deleteHotelById (Long id);
+
+    // step 16 a: findAllHotels
+    List<Hotel> findAllHotels ();
 
 }
