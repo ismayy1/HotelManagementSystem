@@ -10,4 +10,7 @@ public interface HotelService {
     // step 14 c: find hotel by id
     Hotel findHotelById (Long id);
 
+    // step 15 c: delete hotel by id
+    void deleteHotelById(Long id);
+
 }

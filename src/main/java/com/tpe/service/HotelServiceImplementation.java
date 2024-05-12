@@ -70,4 +70,33 @@ public class HotelServiceImplementation implements HotelService {
 
     }
 
+    // step 14 c: delete hotel by id
+    @Override
+    public void deleteHotelById(Long id) {
+//        hotelRepository.deleteHotelById(id);
+
+        scanner = new Scanner(System.in);
+
+        try {
+            Hotel hotelToDelete = hotelRepository.findHotelById(id);
+
+            if (hotelToDelete == null) {
+                throw new HotelNotFoundException("Hotel Not Found with id: " + id);
+            }
+
+            System.out.println("hotelToDelete = " + hotelToDelete);
+            System.out.println("Are you sure you want to delete the hotel with id: " + hotelToDelete.getId() + "? (Y/N");
+            String confirmation = scanner.nextLine();
+
+            if (confirmation.equalsIgnoreCase("y")) {
+                hotelRepository.deleteHotelById(hotelToDelete.getId());
+                System.out.println("The hotel with the id: " + hotelToDelete.getId() + " deleted successfully");
+            } else {
+                System.out.println("Delete Operation Cancelled..");
+            }
+        } catch (HotelNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
