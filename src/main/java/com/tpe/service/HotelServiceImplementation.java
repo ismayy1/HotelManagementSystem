@@ -103,6 +103,8 @@ public class HotelServiceImplementation implements HotelService {
     @Override
     public List<Hotel> displayAllHotels() {
 
+//        hotelRepository.displayAllHotels();
+
         try {
             List<Hotel> hotels = hotelRepository.displayAllHotels();
 
@@ -118,7 +120,6 @@ public class HotelServiceImplementation implements HotelService {
         } catch (Exception e) {
             System.out.println("An error occurred While retrieving the hotels: " + e.getMessage());
         }
-
         return null;
     }
 

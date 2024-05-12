@@ -105,7 +105,10 @@ public class HotelManagementSystemServiceClass {
                     hotelService.deleteHotelById(hotelIdToDelete);
                     break;
                 case 4:
+                    // display all hotels
                     System.out.println("4. Find All Hotels");
+
+                    hotelService.displayAllHotels();
                     break;
                 case 5:
                     System.out.println("5. Update Hotel By ID");
