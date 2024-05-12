@@ -98,7 +98,11 @@ public class HotelManagementSystemServiceClass {
                     hotelService.findHotelById(hotelId);
                     break;
                 case 3:
-                    System.out.println("3. Delete Hotel By ID");
+                    System.out.println("Enter the id of a hotel to delete:");
+
+                    // step 15 e: delete hotel by id
+                    Long hotelIdToDelete = scanner.nextLong();
+                    hotelService.deleteHotelById(hotelIdToDelete);
                     break;
                 case 4:
                     System.out.println("4. Find All Hotels");
