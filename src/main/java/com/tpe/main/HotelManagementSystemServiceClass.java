@@ -84,12 +84,18 @@ public class HotelManagementSystemServiceClass {
             scanner.nextLine();
 
             switch (choice) {
+
+                // step 13 e:
                 case 1:
                     System.out.println("Add new Hotel: ");
                     hotelService.saveHotel();
                     break;
                 case 2:
                     System.out.println("2. Find Hotel By ID");
+
+                    // step 14 e:
+                    Long hotelId = scanner.nextLong();
+                    hotelService.findHotelById(hotelId);
                     break;
                 case 3:
                     System.out.println("3. Delete Hotel By ID");
