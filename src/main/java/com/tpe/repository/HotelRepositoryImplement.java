@@ -68,7 +68,7 @@ public class HotelRepositoryImplement implements HotelRepository {
 
     // step 16 B: display all hotels
     @Override
-    public List<Hotel> findAllHotels() {
+    public List<Hotel> displayAllHotels() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         return session.createQuery("FROM Hotel", Hotel.class).getResultList();
     }

@@ -17,6 +17,6 @@ public interface HotelRepository {
     void deleteHotelById (Long id);
 
     // step 16 a: findAllHotels
-    List<Hotel> findAllHotels ();
+    List<Hotel> displayAllHotels ();
 
 }
