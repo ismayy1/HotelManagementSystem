@@ -7,4 +7,8 @@ public interface HotelRepository {
 
     Hotel saveHotel (Hotel hotel);
 
+    //step 14:
+    // a. find the hotel by id
+    Hotel findHotelById (Long id);
+
 }
