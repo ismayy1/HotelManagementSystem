@@ -1,7 +1,9 @@
 package com.tpe.repository;
 
 import com.tpe.config.HibernateUtils;
+import com.tpe.exception.HotelNotFoundException;
 import com.tpe.model.Hotel;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -35,6 +37,31 @@ public class HotelRepositoryImplement implements HotelRepository {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
         return session.get(Hotel.class, id);
+    }
+
+    // step 15 b: delete hotel by id
+    @Override
+    public void deleteHotelById(Long id) {
+
+        try {
+
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+            Hotel hotelIdToDelete = session.get(Hotel.class, id);
+
+            if (hotelIdToDelete != null) {
+                session.delete(hotelIdToDelete);;
+                transaction.commit();
+            } else {
+                throw new HotelNotFoundException("Hotel not Found Exception with id: " + id);
+            }
+
+            session.close();
+//        HibernateUtils.closeSession(session); // either one is okay to close the session
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
