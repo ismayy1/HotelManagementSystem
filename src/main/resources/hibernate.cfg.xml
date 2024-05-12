@@ -27,6 +27,9 @@
 .addAnnotatedClass(Hotel.class).addAnnotatedClass(Room.class); line in 'HibernateUtils.java class-->
         <mapping class="main.java.model.Hotel"></mapping>
         <mapping class="main.java.model.Room"></mapping>
+        <mapping class="main.java.model.Address"></mapping>
+        <mapping class="main.java.model.Reservation"></mapping>
+        <mapping class="main.java.model.Guest"></mapping>
 
     </session-factory>
 </hibernate-configuration>
