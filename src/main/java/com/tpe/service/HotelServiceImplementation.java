@@ -4,6 +4,7 @@ import com.tpe.exception.HotelNotFoundException;
 import com.tpe.model.Hotel;
 import com.tpe.repository.HotelRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class HotelServiceImplementation implements HotelService {
@@ -97,6 +98,11 @@ public class HotelServiceImplementation implements HotelService {
         } catch (HotelNotFoundException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public List<Hotel> displayAllHotels() {
+        return null;
     }
 
 }

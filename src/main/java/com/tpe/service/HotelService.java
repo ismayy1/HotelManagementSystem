@@ -2,6 +2,8 @@ package com.tpe.service;
 
 import com.tpe.model.Hotel;
 
+import java.util.List;
+
 public interface HotelService {
 
     // step 13 c: save Hotel
@@ -12,5 +14,8 @@ public interface HotelService {
 
     // step 15 c: delete hotel by id
     void deleteHotelById(Long id);
+
+    //display all Hotels
+    List<Hotel> displayAllHotels();
 
 }
