@@ -102,6 +102,23 @@ public class HotelServiceImplementation implements HotelService {
 
     @Override
     public List<Hotel> displayAllHotels() {
+
+        try {
+            List<Hotel> hotels = hotelRepository.displayAllHotels();
+
+            if (!hotels.isEmpty()) {
+                System.out.println("List of Hotels: ");
+                for (Hotel hotel: hotels) {
+                    System.out.println("hotel = " + hotel);
+                    System.out.println("===============================");
+                }
+            }else {
+                System.out.println("Hotel list is empty...");
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred While retrieving the hotels: " + e.getMessage());
+        }
+
         return null;
     }
 
