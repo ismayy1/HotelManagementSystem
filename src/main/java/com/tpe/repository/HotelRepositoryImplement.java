@@ -73,4 +73,21 @@ public class HotelRepositoryImplement implements HotelRepository {
         return session.createQuery("FROM Hotel", Hotel.class).getResultList();
     }
 
+    // step 17 b: update hotel
+    @Override
+    public void updateHotel(Hotel hotel) {
+
+        try {
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+
+            Hotel hotelToUpdate = session.get(Hotel.class, hotel.getId());
+
+            if (hotelToUpdate != null) {
+                hotelToUpdate.setName("");
+            }
+        }
+
+    }
+
 }

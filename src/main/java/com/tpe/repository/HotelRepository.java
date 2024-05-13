@@ -19,4 +19,7 @@ public interface HotelRepository {
     // step 16 a: findAllHotels
     List<Hotel> displayAllHotels ();
 
+    // step 17 s: update hotel
+    void updateHotel(Hotel hotel);
+
 }
