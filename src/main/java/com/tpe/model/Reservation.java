@@ -79,7 +79,7 @@ public class Reservation {
                 "id=" + id +
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +
-                ", guest=" + guest +
+//                ", guest=" + guest +
                 ", room=" + room +
                 '}';
     }

@@ -2,6 +2,7 @@ package com.tpe.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 //step 9: Create guest Entity
 @Entity
@@ -26,11 +27,11 @@ public class Guest {
         createDate = LocalDateTime.now();
     }
 
+    @OneToMany (mappedBy = "guest", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
+
     public Long getId() {
         return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
     }
     public String getName() {
         return name;
@@ -50,13 +51,20 @@ public class Guest {
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
     @Override
     public String toString() {
         return "Guest{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-//                ", address=" + address +
+                ", address=" + address +
                 ", createDate=" + createDate +
+//                ", reservations=" + reservations +
                 '}';
     }
 }
