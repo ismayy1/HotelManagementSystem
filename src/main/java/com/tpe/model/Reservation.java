@@ -14,7 +14,8 @@ public class Reservation {
     @SequenceGenerator(
             name = "sequence",
             sequenceName = "reservation_id",
-            initialValue = 4001
+            initialValue = 4001,    // starting value of the id
+            allocationSize = 1  // optional, by default it'll start with 50
     )
     private Long id;
 
