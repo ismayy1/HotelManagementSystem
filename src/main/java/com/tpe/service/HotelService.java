@@ -1,5 +1,6 @@
 package com.tpe.service;
 
+import com.tpe.exception.HotelNotFoundException;
 import com.tpe.model.Hotel;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public interface HotelService {
 
     //display all Hotels
     List<Hotel> displayAllHotels();
+
+    // update hotel by id
+    void updateHotelById(Long id, Hotel updateHotel) throws HotelNotFoundException;
 
 }

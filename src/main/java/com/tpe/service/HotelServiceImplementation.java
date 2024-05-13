@@ -123,4 +123,13 @@ public class HotelServiceImplementation implements HotelService {
         return null;
     }
 
+    @Override
+    public void updateHotelById(Long id, Hotel updateHotel) throws HotelNotFoundException {
+
+        try {
+
+        }
+
+    }
+
 }
