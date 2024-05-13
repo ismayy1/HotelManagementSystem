@@ -65,6 +65,6 @@ public class RoomServiceImplementation implements RoomService {
             e.printStackTrace();
         }
 
-        return null;
+        return room;
     }
 }
