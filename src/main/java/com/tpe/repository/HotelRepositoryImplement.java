@@ -81,11 +81,19 @@ public class HotelRepositoryImplement implements HotelRepository {
             Session session = HibernateUtils.getSessionFactory().openSession();
             Transaction transaction = session.beginTransaction();
 
+            // load the hotel entity using same session
             Hotel hotelToUpdate = session.get(Hotel.class, hotel.getId());
 
             if (hotelToUpdate != null) {
-                hotelToUpdate.setName("");
+                hotelToUpdate.setName(hotel.getName());
+                hotelToUpdate.setLocation(hotel.getLocation());
+                // update other properties as needed
+                session.update(hotelToUpdate);
             }
+
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
         }
 
     }
