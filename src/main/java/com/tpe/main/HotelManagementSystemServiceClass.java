@@ -187,16 +187,24 @@ public class HotelManagementSystemServiceClass {
                     System.out.println("1. Add new Room  : ");
                     roomService.saveRoom();
                     break;
-
-                case  2 :
-                    System.out.println("2. Find Room By ID");
+                case 2:
+                    //step 19e : findRoomById
+                    System.out.print("Enter the Room ID to Find: ");
+                    Long roomId = scanner.nextLong();
+                    roomService.findRoomById(roomId);
                     break;
-
-                case 3 :
-                    System.out.println("Enter  the Room Id to Delete : ");
+                case 3:
+                    //step 20e: findAllRoom
+                    System.out.println("==== Delete Room By ID ====");
+                    System.out.print("Enter the room ID to delete: ");
+                    Long roomIdToDelete = scanner.nextLong();
+                    scanner.nextLine(); // Consume the newline character
+                    roomService.deleteRoomById(roomIdToDelete);
                     break;
-                case  4 :
-                    System.out.println("4. Find All Rooms");
+                case 4:
+                    //step 21e:deleteRoomById
+                    System.out.println("==== Find All Rooms ====");
+                    roomService.findAllRooms();
                     break;
                 case  5 :
                     exit = true;
@@ -206,9 +214,7 @@ public class HotelManagementSystemServiceClass {
                     System.out.println("Invalid Operations  .Please Try again ....");
                     break;
             }
-
         }
-
     }
 
 
