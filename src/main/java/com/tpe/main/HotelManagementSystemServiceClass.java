@@ -4,8 +4,12 @@ import com.tpe.exception.HotelNotFoundException;
 import com.tpe.model.Hotel;
 import com.tpe.repository.HotelRepository;
 import com.tpe.repository.HotelRepositoryImplement;
+import com.tpe.repository.RoomRepository;
+import com.tpe.repository.RoomRepositoryImplementation;
 import com.tpe.service.HotelService;
 import com.tpe.service.HotelServiceImplementation;
+import com.tpe.service.RoomService;
+import com.tpe.service.RoomServiceImplementation;
 
 import java.util.Scanner;
 
@@ -19,6 +23,11 @@ public class HotelManagementSystemServiceClass {
 
         HotelRepository hotelRepository = new HotelRepositoryImplement();
         HotelService hotelService = new HotelServiceImplementation(hotelRepository);
+
+
+        // create an instance of room repository and room service
+        RoomRepository roomRepository = new RoomRepositoryImplementation();
+        RoomService roomService = new RoomServiceImplementation(roomRepository, hotelRepository);
 
         // create Scanner for the user input
         scanner = new Scanner(System.in);
@@ -46,6 +55,7 @@ public class HotelManagementSystemServiceClass {
                     break;
                 case 2:
                     System.out.println("2. Display Room Operation");
+                    displayHotelOperationMenu(hotelService);
                     break;
                 case 3:
                     System.out.println("3. Display Guest Operation");
@@ -172,10 +182,10 @@ public class HotelManagementSystemServiceClass {
 
             switch (choice){
 
-
+                // step 18 e: save Room
                 case  1 :
                     System.out.println("1. Add new Room  : ");
-                    displayMenuHotelManagementSystem();
+                    roomService.saveRoom();
                     break;
 
                 case  2 :
