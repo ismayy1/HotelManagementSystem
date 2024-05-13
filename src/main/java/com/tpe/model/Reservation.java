@@ -34,4 +34,53 @@ public class Reservation {
     @JoinColumn (name = "room_id", nullable = false)
     private Room room;
 
+    // getter setter
+    public Reservation() {
+    }
+
+    public Reservation(Long id, LocalDate checkIn, LocalDate checkOut, Guest guest, Room room) {
+        this.id = id;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.guest = guest;
+        this.room = room;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public LocalDate getCheckIn() {
+        return checkIn;
+    }
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
+    }
+    public LocalDate getCheckOut() {
+        return checkOut;
+    }
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
+    }
+    public Guest getGuest() {
+        return guest;
+    }
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+    public Room getRoom() {
+        return room;
+    }
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", guest=" + guest +
+                ", room=" + room +
+                '}';
+    }
 }
