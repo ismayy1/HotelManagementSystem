@@ -146,4 +146,59 @@ public class HotelManagementSystemServiceClass {
             }
         }
     }
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    //step 18 [a - b - c - d] Crud Operation about Room
+    private static void displayRoomOperationMenu( ){
+
+        scanner= new Scanner(System.in);
+
+        boolean exit = false;
+
+        while (!exit){
+
+            System.out.println("==== Room Operations ====");
+            System.out.println("1. Add a new Room");
+            System.out.println("2. Find Room By ID");
+            System.out.println("3. Delete Room By ID");
+            System.out.println("4. Find All Rooms");
+            System.out.println("5. Return to Main Menu");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+
+            scanner.nextLine();
+
+            switch (choice){
+
+
+                case  1 :
+                    System.out.println("1. Add new Room  : ");
+                    break;
+
+                case  2 :
+                    System.out.println("2. Find Room By ID");
+                    break;
+
+                case 3 :
+                    System.out.println("Enter  the Room Id to Delete : ");
+                    break;
+                case  4 :
+                    System.out.println("4. Find All Rooms");
+                    break;
+                case  5 :
+                    exit = true;
+                    break;
+
+                default:
+                    System.out.println("Invalid Operations  .Please Try again ....");
+                    break;
+            }
+
+        }
+
+    }
+
+
 }
