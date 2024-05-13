@@ -1,6 +1,7 @@
 package com.tpe.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 // step 9 d: create reservation
 @Entity
@@ -19,6 +20,18 @@ public class Reservation {
     )
     private Long id;
 
+    @Column (nullable = false)
+    private LocalDate checkIn;
 
+    @Column (nullable = false)
+    private LocalDate checkOut;
+
+    @ManyToOne
+    @JoinColumn (name = "guest_id", nullable = false)
+    private Guest guest;
+
+    @ManyToOne
+    @JoinColumn (name = "room_id", nullable = false)
+    private Room room;
 
 }
