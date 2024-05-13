@@ -160,7 +160,7 @@ public class HotelManagementSystemServiceClass {
 
     ///////////////////////////////////////////////////////////////////////////
     //step 18 [a - b - c - d] Crud Operation about Room
-    private static void displayRoomOperationMenu( ){
+    private static void displayRoomOperationMenu(RoomService roomService){
 
         scanner= new Scanner(System.in);
 
@@ -190,7 +190,6 @@ public class HotelManagementSystemServiceClass {
 
                 case  2 :
                     System.out.println("2. Find Room By ID");
-                    displayRoomOperationMenu();
                     break;
 
                 case 3 :
