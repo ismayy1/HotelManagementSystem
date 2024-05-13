@@ -175,10 +175,12 @@ public class HotelManagementSystemServiceClass {
 
                 case  1 :
                     System.out.println("1. Add new Room  : ");
+                    displayMenuHotelManagementSystem();
                     break;
 
                 case  2 :
                     System.out.println("2. Find Room By ID");
+                    displayRoomOperationMenu();
                     break;
 
                 case 3 :
