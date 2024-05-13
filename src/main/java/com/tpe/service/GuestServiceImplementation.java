@@ -21,6 +21,10 @@ public class GuestServiceImplementation implements GuestService {
 
         scanner = new Scanner(System.in);
 
+        Guest guest = new Guest();
+
+
+
         return null;
     }
 }

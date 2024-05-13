@@ -34,6 +34,9 @@ public class Guest {
         this.name = name;
     }
 
+    public Guest() {
+    }
+
     public Long getId() {
         return id;
     }
