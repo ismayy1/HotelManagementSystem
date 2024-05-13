@@ -30,6 +30,12 @@ public class Guest {
     @OneToMany (mappedBy = "guest", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 
+    public Guest(String name) {
+        this.name = name;
+    }
+
+
+
     public Long getId() {
         return id;
     }
