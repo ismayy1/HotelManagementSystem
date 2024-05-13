@@ -127,7 +127,19 @@ public class HotelServiceImplementation implements HotelService {
     public void updateHotelById(Long id, Hotel updateHotel) throws HotelNotFoundException {
 
         try {
+            Hotel existingHotel = hotelRepository.findHotelById(id);
 
+            if (existingHotel == null) {
+                throw new HotelNotFoundException("Hotel Not Found with id: " + id);
+            }
+            // perform a validation or business logic before updating
+            existingHotel.setName(updateHotel.getName());
+            existingHotel.setLocation(updateHotel.getLocation());
+
+            hotelRepository.updateHotel(existingHotel);
+            System.out.println("Hotel Updated Successfully");
+        } catch (HotelNotFoundException e) {
+            System.out.println(e.getMessage());
         }
 
     }

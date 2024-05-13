@@ -1,5 +1,7 @@
 package com.tpe.main;
 
+import com.tpe.exception.HotelNotFoundException;
+import com.tpe.model.Hotel;
 import com.tpe.repository.HotelRepository;
 import com.tpe.repository.HotelRepositoryImplement;
 import com.tpe.service.HotelService;
@@ -87,37 +89,59 @@ public class HotelManagementSystemServiceClass {
 
                 // step 13 e:
                 case 1:
-                    System.out.println("Add new Hotel: ");
+                    System.out.println("============== Add new Hotel ==============");
                     hotelService.saveHotel();
                     break;
                 case 2:
-                    System.out.println("2. Find Hotel By ID");
+                    System.out.println("============== Find Hotel By ID ==============");
 
                     // step 14 e:
                     Long hotelId = scanner.nextLong();
                     hotelService.findHotelById(hotelId);
                     break;
                 case 3:
-                    System.out.println("Enter the id of a hotel to delete:");
-
+                    System.out.println("============== Enter the id of a hotel to delete ==============");
                     // step 15 e: delete hotel by id
                     Long hotelIdToDelete = scanner.nextLong();
                     hotelService.deleteHotelById(hotelIdToDelete);
                     break;
                 case 4:
                     // display all hotels
-                    System.out.println("4. Find All Hotels");
-
+                    System.out.println("============== Find All Hotels ==============");
                     hotelService.displayAllHotels();
                     break;
                 case 5:
-                    System.out.println("5. Update Hotel By ID");
+                    // step 17e. update hotel by id
+                    System.out.println("============== Update Hotel By ID ==============");
+                    System.out.println("Please enter the hotel id: ");
+                    Long hotelId1 = scanner.nextLong();
+                    scanner.nextLine();
+
+                    try {
+//                        Hotel hotelExists = hotelService.findHotelById(hotelId1);
+                        System.out.println("Please enter the Hotel Name: ");
+                        String hotelName = scanner.nextLine();
+
+                        System.out.println("Please enter the Hotel Location: ");
+                        String hotelLocation = scanner.nextLine();
+
+                        Hotel updateHotel = new Hotel();
+                        updateHotel.setId(hotelId1);
+                        updateHotel.setName(hotelName);
+                        updateHotel.setLocation(hotelLocation);
+
+                        hotelService.updateHotelById(hotelId1, updateHotel);
+
+                    } catch (HotelNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
+
                     break;
                 case 6:
                     exit = true;
                     break;
                 default:
-                    System.out.println("Invalid Operation. Please try again!");
+                    System.out.println("============== Invalid Operation. Please try again ==============");
                     break;
             }
         }
