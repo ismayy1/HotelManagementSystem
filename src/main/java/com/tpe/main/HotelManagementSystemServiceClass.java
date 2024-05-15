@@ -2,86 +2,100 @@ package com.tpe.main;
 
 import com.tpe.exception.HotelNotFoundException;
 import com.tpe.model.Hotel;
-import com.tpe.repository.HotelRepository;
-import com.tpe.repository.HotelRepositoryImplement;
-import com.tpe.repository.RoomRepository;
-import com.tpe.repository.RoomRepositoryImplementation;
-import com.tpe.service.HotelService;
-import com.tpe.service.HotelServiceImplementation;
-import com.tpe.service.RoomService;
-import com.tpe.service.RoomServiceImplementation;
+import com.tpe.repository.*;
+import com.tpe.service.*;
 
 import java.util.Scanner;
 
 //step 10: Create HMS Service Class we need to Call this class in Main Class
 public class HotelManagementSystemServiceClass {
+    //step 10 : Create HMS Service Class we need to Call this clas in Main Class
 
-    private static Scanner scanner;
 
-    //create an instance of hotelRepository and hotelService
-    public static void displayMenuHotelManagementSystem() {
 
-        HotelRepository hotelRepository = new HotelRepositoryImplement();
+    private  static Scanner scanner;
+
+
+
+
+
+    public static void displayMenuHotelManagementSystem(){
+
+        //create an instance of hotel repository and hotel service
+        HotelRepository hotelRepository  = new HotelRepositoryImplement();
         HotelService hotelService = new HotelServiceImplementation(hotelRepository);
 
+        //create an instance of Room repository and Room Service
 
-        // create an instance of room repository and room service
         RoomRepository roomRepository = new RoomRepositoryImplementation();
-        RoomService roomService = new RoomServiceImplementation(roomRepository, hotelRepository);
+        RoomService roomService = new RoomServiceImplementation(roomRepository,hotelRepository);
 
-        // create Scanner for the user input
-        scanner = new Scanner(System.in);
+        //create an instance of Guest repository and Guest Service
 
-        //menu loop
-        boolean exit = false;
+        GuestRepository guestRepository = new GuestRepositoryImplementation();
+        GuestService guestService= new GuestServiceImplementation(guestRepository);
 
-        while (!exit) {
-            System.out.println("======= Hotel Management System Menu =======");
-            System.out.println("1. Hotel Operation");
-            System.out.println("2. Room Operation");
-            System.out.println("3. Guest Operation");
-            System.out.println("4. Reservation Operation");
-            System.out.println("5. Exit Operation");
 
-            System.out.println("Enter you Selection Number:");
+        //create Scanner for the user input
+
+        scanner= new Scanner(System.in);
+
+        //menu Loop
+
+        boolean exit= false;
+
+        while (!exit){
+            System.out.println(" ----------  Hotel Management System Menu  ______________");
+            System.out.println("1 . Hotel Operation ");
+            System.out.println("2 . Room Operation ");
+            System.out.println("3 . Guest Operation ");
+            System.out.println("4 . Reservation  Operation ");
+            System.out.println("5 . Exit ");
+
+            System.out.println("Enter Your Option  : ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // it'll consume NewLine
+            scanner.nextLine();// it will consume New line
 
-            switch (choice) {
-                case 1:
-                    System.out.println("1. Display Hotel Operation");
+            switch (choice){
+                case  1:
                     displayHotelOperationMenu(hotelService);
                     break;
-                case 2:
-                    System.out.println("2. Display Room Operation");
-                    displayHotelOperationMenu(hotelService);
+
+                case  2:
+                    displayRoomOperationMenu(roomService);
                     break;
-                case 3:
-                    System.out.println("3. Display Guest Operation");
+
+                case  3:
+                    displayGuestOperationMenu(guestService);
                     break;
-                case 4:
-                    System.out.println("4. Display Reservation Operation");
+
+                case  4:
+                    System.out.println("4 . Display Reservation  Operation ");
                     break;
-                case 5:
-                    exit = true;
-                    System.out.println("Good Bye!!!");
+
+                case  5:
+                    exit=true;
+                    System.out.println("Good Bye !!!!! ");
                     break;
                 default:
-                    System.out.println("Invalid Choice. Please Try Again Later!");
+                    System.out.println("Invalid Choice  Please Try again Later .. ");
                     break;
             }
         }
 
     }
 
-    // step 13 [a-b-c-d]
-    private static void displayHotelOperationMenu(HotelService hotelService) {
 
-        scanner = new Scanner(System.in);
+    //step 13 [a - b - c - d]
+
+    private static void displayHotelOperationMenu(HotelService hotelService){
+
+        scanner= new Scanner(System.in);
+
         boolean exit = false;
 
-        while (!exit) {
+        while (!exit){
 
             System.out.println("==== Hotel Operations ====");
             System.out.println("1. Add a new hotel");
@@ -93,74 +107,82 @@ public class HotelManagementSystemServiceClass {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
+
             scanner.nextLine();
 
-            switch (choice) {
+            switch (choice){
 
-                // step 13 e:
-                case 1:
-                    System.out.println("============== Add new Hotel ==============");
+                //step 13 e:
+                case  1 :
+                    System.out.println("Add new Hotel  : ");
                     hotelService.saveHotel();
                     break;
-                case 2:
-                    System.out.println("============== Find Hotel By ID ==============");
 
-                    // step 14 e:
+                //step 14 e : find hotel By id
+                case  2 :
+                    System.out.println("2. Find Hotel By ID");
                     Long hotelId = scanner.nextLong();
                     hotelService.findHotelById(hotelId);
                     break;
-                case 3:
-                    System.out.println("============== Enter the id of a hotel to delete ==============");
-                    // step 15 e: delete hotel by id
-                    Long hotelIdToDelete = scanner.nextLong();
-                    hotelService.deleteHotelById(hotelIdToDelete);
+
+
+                //step 15 e :delete hotel By Id
+                case 3 :
+                    System.out.println("Enter  the Hotel Id to Delete : ");
+                    Long hotelIdTODelete = scanner.nextLong();
+                    hotelService.deleteHotelById(hotelIdTODelete);
                     break;
-                case 4:
-                    // display all hotels
-                    System.out.println("============== Find All Hotels ==============");
+
+                //step 16 e : display ALl Hotels
+                case  4 :
+                    System.out.println("4. Find All Hotels");
                     hotelService.displayAllHotels();
                     break;
-                case 5:
-                    // step 17e. update hotel by id
-                    System.out.println("============== Update Hotel By ID ==============");
-                    System.out.println("Please enter the hotel id: ");
-                    Long hotelId1 = scanner.nextLong();
+
+                case  5 :
+
+                    //step 17 e update hotel
+                    System.out.println("=========== Update Hotel By ID  ==============");
+                    System.out.println("Please Enter the Hotel Id to Update : ");
+
+                    Long hotelId1= scanner.nextLong();
                     scanner.nextLine();
-
                     try {
-//                        Hotel hotelExists = hotelService.findHotelById(hotelId1);
-                        System.out.println("Please enter the Hotel Name: ");
-                        String hotelName = scanner.nextLine();
+                        //  Hotel existHotel =  hotelService.findHotelById(hotelId1);
+                        System.out.println("Please Enter the Hotel Name : ");
+                        String name=  scanner.nextLine();
 
-                        System.out.println("Please enter the Hotel Location: ");
-                        String hotelLocation = scanner.nextLine();
+                        System.out.println("Please Enter the Hotel Location  :");
+                        String location= scanner.nextLine();
 
                         Hotel updateHotel = new Hotel();
+
                         updateHotel.setId(hotelId1);
-                        updateHotel.setName(hotelName);
-                        updateHotel.setLocation(hotelLocation);
+                        updateHotel.setName(name);
+                        updateHotel.setLocation(location);
 
-                        hotelService.updateHotelById(hotelId1, updateHotel);
-
-                    } catch (HotelNotFoundException e) {
+                        hotelService.updateHotelById(hotelId1,updateHotel);
+                    }catch (HotelNotFoundException e){
                         System.out.println(e.getMessage());
                     }
-
                     break;
-                case 6:
+
+                case  6 :
                     exit = true;
                     break;
+
                 default:
-                    System.out.println("============== Invalid Operation. Please try again ==============");
+                    System.out.println("Invalid Operations  .Please Try again ....");
                     break;
             }
+
         }
+
     }
 
 
-    ///////////////////////////////////////////////////////////////////////////
     //step 18 [a - b - c - d] Crud Operation about Room
-    private static void displayRoomOperationMenu(RoomService roomService){
+    private static void displayRoomOperationMenu(RoomService roomService ){
 
         scanner= new Scanner(System.in);
 
@@ -182,11 +204,12 @@ public class HotelManagementSystemServiceClass {
 
             switch (choice){
 
-                // step 18 e: save Room
+                //step 18 e:  save room
                 case  1 :
-                    System.out.println("1. Add new Room  : ");
+                    System.out.println("========   1. Add new Room  :  ============");
                     roomService.saveRoom();
                     break;
+
                 case 2:
                     //step 19e : findRoomById
                     System.out.print("Enter the Room ID to Find: ");
@@ -214,13 +237,13 @@ public class HotelManagementSystemServiceClass {
                     System.out.println("Invalid Operations  .Please Try again ....");
                     break;
             }
+
         }
+
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////
     //step 22 [a - b - c - d] Crud Operation about Room
-    private static void displayGuestOperationMenu(){
+    private static void displayGuestOperationMenu(GuestService guestService){
 
         scanner= new Scanner(System.in);
 
@@ -242,10 +265,10 @@ public class HotelManagementSystemServiceClass {
 
             switch (choice){
 
-
+                //step 22 e : save the Guest
                 case  1 :
                     System.out.println("========   1. Add new Guest  :  ============");
-
+                    guestService.saveGuest();
                     break;
 
                 case 2:
