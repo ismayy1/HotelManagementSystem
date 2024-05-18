@@ -5,6 +5,7 @@ import com.tpe.repository.GuestRepository;
 import com.tpe.repository.ReservationRepository;
 import com.tpe.repository.RoomRepository;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ReservationServiceImplementation implements ReservationService {
@@ -25,6 +26,27 @@ public class ReservationServiceImplementation implements ReservationService {
     // step 26 d: save Reservation
     @Override
     public Reservation saveReservation() {
+
+        scanner = new Scanner(System.in);
+
+        System.out.println("Enter Guest by ID: ");
+        Long guestId = scanner.nextLong();
+        scanner.nextLine();
+
+        System.out.println("Enter the Room ID: ");
+        Long roomId = scanner.nextLong();
+        scanner.nextLine();
+
+        System.out.println("Enter the check-in date (yyyy-MM-dd): ");
+        LocalDate checkInDate = LocalDate.parse(scanner.nextLine());
+
+        System.out.println("Enter the check-out date (yyyy-MM-dd): ");
+        LocalDate checkOutDate = LocalDate.parse(scanner.nextLine());
+
+        try {
+
+        }
+
         return null;
     }
 }
