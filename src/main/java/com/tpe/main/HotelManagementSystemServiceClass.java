@@ -35,6 +35,10 @@ public class HotelManagementSystemServiceClass {
         GuestRepository guestRepository = new GuestRepositoryImplementation();
         GuestService guestService= new GuestServiceImplementation(guestRepository);
 
+        ReservationRepository reservationRepository = new ReservationRepositoryImplementation();
+        ReservationService reservationService =
+                new ReservationServiceImplementation(reservationRepository, guestRepository, roomRepository);
+
 
         //create Scanner for the user input
 
@@ -300,7 +304,7 @@ public class HotelManagementSystemServiceClass {
     }
 
     //step 26 [a - b - c - d] Crud Operation about Reservation
-    private static void displayReservationOperationMenu( ){
+    private static void displayReservationOperationMenu(ReservationService reservationService){
 
         scanner= new Scanner(System.in);
 
@@ -325,6 +329,7 @@ public class HotelManagementSystemServiceClass {
 
                 case  1 :
                     System.out.println("========   1. Add new Reservation  :  ============");
+                    reservationService.saveReservation();
                     break;
                 case 2:
 
