@@ -1,9 +1,11 @@
 package com.tpe.service;
 
+import com.tpe.exception.GuestNotFoundException;
 import com.tpe.model.Address;
 import com.tpe.model.Guest;
 import com.tpe.repository.GuestRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GuestServiceImplementation implements GuestService {
@@ -48,5 +50,62 @@ public class GuestServiceImplementation implements GuestService {
         System.out.println("Guest Saved successfully with and id: " + guest.getId());
 
         return guest;
+    }
+
+    //23d : findGuestById
+    @Override
+    public void findGuestById(Long id) throws GuestNotFoundException {
+        try {
+            Guest foundGuest = guestRepository.findGuestById(id);
+            if (foundGuest != null) {
+                System.out.println("---------------------------------");
+                System.out.println(foundGuest);
+            } else {
+                throw new GuestNotFoundException("Guest not found with ID: " + id);
+            }
+        } catch (GuestNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
+
+    //25c: findALlGuest
+    @Override
+    public List<Guest> findAllGuest() {
+        try {
+            List<Guest> guests = guestRepository.findAllGuest();
+            if (!guests.isEmpty()) {
+                for (Guest guest : guests) {
+                    System.out.println(guest);
+                }
+            } else {
+                throw new GuestNotFoundException("Guest  not found");
+            }
+            return guests;
+        }catch (GuestNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    //24d: deleteGuestById
+    @Override
+    public void deleteGuestId(Long id) {
+        try {
+            Guest existingGuest = guestRepository.findGuestById(id);
+            if (existingGuest == null) {
+                throw new GuestNotFoundException("Guest  not found with ID: " + id);
+            }
+            guestRepository.deleteGuestById(id);
+            throw new GuestNotFoundException("Guest  delete successfully  with ID: " + id);
+        } catch (GuestNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
