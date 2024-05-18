@@ -297,6 +297,58 @@ public class HotelManagementSystemServiceClass {
             }
 
         }
+    }
 
+    //step 26 [a - b - c - d] Crud Operation about Reservation
+    private static void displayReservationOperationMenu( ){
+
+        scanner= new Scanner(System.in);
+
+        boolean exit = false;
+
+        while (!exit){
+
+            System.out.println("==== Reservation Operations ====");
+            System.out.println("1. Add a new Reservation");
+            System.out.println("2. Find Reservation By ID");
+            System.out.println("3. Delete Reservation By ID");
+            System.out.println("4. Find All Reservation");
+            System.out.println("5. Return to Main Menu");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+
+            scanner.nextLine();
+
+            switch (choice){
+
+
+                case  1 :
+                    System.out.println("========   1. Add new Reservation  :  ============");
+                    break;
+                case 2:
+
+                    System.out.print("Enter the Guest ID to Reservation: ");
+                    break;
+                case 3:
+
+                    System.out.println("==== Delete Reservation By ID ====");
+                    System.out.print("Enter the  Reservation to delete: ");
+
+                    break;
+
+                case 4:
+                    System.out.println("==== Find All Reservations ====");
+
+                    break;
+                case  5 :
+                    exit = true;
+                    break;
+
+                default:
+                    System.out.println("Invalid Operations  .Please Try again ....");
+                    break;
+            }
+        }
     }
 }
