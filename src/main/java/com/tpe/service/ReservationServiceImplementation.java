@@ -14,62 +14,69 @@ import java.util.Scanner;
 
 public class ReservationServiceImplementation implements ReservationService {
 
+
     private Scanner scanner;
 
     private final ReservationRepository reservationRepository;
     private final GuestRepository guestRepository;
+
     private final RoomRepository roomRepository;
 
     public ReservationServiceImplementation(ReservationRepository reservationRepository,
-                                            GuestRepository guestRepository, RoomRepository roomRepository) {
+                                  GuestRepository guestRepository, RoomRepository roomRepository) {
         this.reservationRepository = reservationRepository;
         this.guestRepository = guestRepository;
         this.roomRepository = roomRepository;
     }
 
-    // step 26 d: save Reservation
+
+    //step 26 d : save the Reservation
     @Override
     public Reservation saveReservation() {
 
-        scanner = new Scanner(System.in);
+        scanner= new Scanner(System.in);
 
-        System.out.println("Enter Guest by ID: ");
-        Long guestId = scanner.nextLong();
+        System.out.println("Enter Guest By Id :");
+        Long guestId= scanner.nextLong();
         scanner.nextLine();
 
-        System.out.println("Enter the Room ID: ");
-        Long roomId = scanner.nextLong();
+        System.out.println("Enter the Room Id : ");
+
+        Long roomId= scanner.nextLong();
         scanner.nextLine();
 
-        System.out.println("Enter the check-in date (yyyy-MM-dd): ");
-        LocalDate checkInDate = LocalDate.parse(scanner.nextLine());
+        System.out.println("Enter the check -in date (yyyy-MM-dd): ");//2024-5-18
+        LocalDate checkInDate= LocalDate.parse(scanner.nextLine());
 
-        System.out.println("Enter the check-out date (yyyy-MM-dd): ");
-        LocalDate checkOutDate = LocalDate.parse(scanner.nextLine());
+        System.out.println("Enter the check -in date (yyyy-MM-dd): ");//2024-5-18
+        LocalDate checkOutDate= LocalDate.parse(scanner.nextLine());
+
 
         try {
-            Guest existingGuest = guestRepository.findGuestById(guestId);
-            if (existingGuest == null) {
-                throw new GuestNotFoundException("Guest Not Found with id: " + guestId);
+            Guest existGuest = guestRepository.findGuestById(guestId);
+            if (existGuest == null){
+                throw  new GuestNotFoundException("Guest Not Found  with Id : " + guestId);
             }
 
-            Room existingRoom = roomRepository.findRoomById(roomId);
-            if (existingRoom == null) {
-                throw new RoomNotFoundException("Room Not Found with id: " + roomId);
+            Room existRoom= roomRepository.findRoomById(roomId);
+            if (existRoom == null){
+                throw  new RoomNotFoundException(" Room Not Found With Id : " + roomId);
             }
 
             Reservation reservation = new Reservation();
 
-            reservation.setGuest(existingGuest);
-            reservation.setRoom(existingRoom);
+            reservation.setGuest(existGuest);;
+            reservation.setRoom(existRoom);
+
             reservation.setCheckIn(checkInDate);
             reservation.setCheckOut(checkOutDate);
 
             reservationRepository.saveReservation(reservation);
-            System.out.println("Reservation created Successfully. Id: " + reservation.getId());
 
-            return reservation;
-        } catch (GuestNotFoundException | RoomNotFoundException e) {
+            System.out.println("Reservation created Successfully ... Reservation Id : "+ reservation.getId());
+
+            return  reservation;
+        }catch (GuestNotFoundException | RoomNotFoundException e){
             System.out.println(e.getMessage());
         }
 
