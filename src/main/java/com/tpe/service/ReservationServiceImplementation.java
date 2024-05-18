@@ -1,6 +1,10 @@
 package com.tpe.service;
 
+import com.tpe.exception.GuestNotFoundException;
+import com.tpe.exception.RoomNotFoundException;
+import com.tpe.model.Guest;
 import com.tpe.model.Reservation;
+import com.tpe.model.Room;
 import com.tpe.repository.GuestRepository;
 import com.tpe.repository.ReservationRepository;
 import com.tpe.repository.RoomRepository;
@@ -44,7 +48,29 @@ public class ReservationServiceImplementation implements ReservationService {
         LocalDate checkOutDate = LocalDate.parse(scanner.nextLine());
 
         try {
+            Guest existingGuest = guestRepository.findGuestById(guestId);
+            if (existingGuest == null) {
+                throw new GuestNotFoundException("Guest Not Found with id: " + guestId);
+            }
 
+            Room existingRoom = roomRepository.findRoomById(roomId);
+            if (existingRoom == null) {
+                throw new RoomNotFoundException("Room Not Found with id: " + roomId);
+            }
+
+            Reservation reservation = new Reservation();
+
+            reservation.setGuest(existingGuest);
+            reservation.setRoom(existingRoom);
+            reservation.setCheckIn(checkInDate);
+            reservation.setCheckOut(checkOutDate);
+
+            reservationRepository.saveReservation(reservation);
+            System.out.println("Reservation created Successfully. Id: " + reservation.getId());
+
+            return reservation;
+        } catch (GuestNotFoundException | RoomNotFoundException e) {
+            System.out.println(e.getMessage());
         }
 
         return null;
