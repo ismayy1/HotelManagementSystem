@@ -277,14 +277,15 @@ public class HotelManagementSystemServiceClass {
                     guestService.findGuestById(guestId);
                     break;
                 case 3:
-
                     System.out.println("==== Delete Guest By ID ====");
                     System.out.print("Enter the Guest ID to delete: ");
+                    Long guestIdToDelete = scanner.nextLong();
+                    scanner.nextLine(); // Consume the newline character
+                    guestService.deleteGuestId(guestIdToDelete);
                     break;
                 case 4:
-
                     System.out.println("==== Find All GuestS ====");
-
+                    guestService.findAllGuest();
                     break;
                 case  5 :
                     exit = true;
