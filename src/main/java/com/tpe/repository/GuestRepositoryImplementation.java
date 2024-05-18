@@ -44,31 +44,31 @@ public class GuestRepositoryImplementation implements GuestRepository {
     }
 
     //23b : findGuestById
-//    @Override
-//    public Guest findGuestById(Long guestId) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        return session.get(Guest.class, guestId);
-//    }
-
-
-    // Criteria API findGuestByID:
     @Override
     public Guest findGuestById(Long guestId) {
-        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
-
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<Guest> query = builder.createQuery(Guest.class);
-            Root<Guest> root = query.from(Guest.class);
-
-            query.select(root).where(builder.equal(root.get("id"), guestId));
-
-            return session.createQuery(query).uniqueResult();
-        } catch (GuestNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        return session.get(Guest.class, guestId);
     }
+
+
+//    // Criteria API findGuestByID:
+//    @Override
+//    public Guest findGuestById(Long guestId) {
+//        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+//
+//            CriteriaBuilder builder = session.getCriteriaBuilder();
+//            CriteriaQuery<Guest> query = builder.createQuery(Guest.class);
+//            Root<Guest> root = query.from(Guest.class);
+//
+//            query.select(root).where(builder.equal(root.get("id"), guestId));
+//
+//            return session.createQuery(query).uniqueResult();
+//        } catch (GuestNotFoundException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//
+//    }
 
 
     //24b: deleteGuestById
