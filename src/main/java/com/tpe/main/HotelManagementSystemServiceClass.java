@@ -272,9 +272,9 @@ public class HotelManagementSystemServiceClass {
                     break;
 
                 case 2:
-
                     System.out.print("Enter the Guest ID to Find: ");
-
+                    Long guestId = scanner.nextLong();
+                    guestService.findGuestById(guestId);
                     break;
                 case 3:
 
