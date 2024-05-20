@@ -60,4 +60,23 @@ public class ReservationRepositoryImplementation implements ReservationRepositor
             throw new ReservationNotFoundException("Failed to Fetch the Reservations");
         }
     }
+
+    @Override
+    public void deleteReservationById(Long id) {
+        try {
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            Transaction transaction = session.beginTransaction();
+
+            Reservation reservation = session.load(Reservation.class, id);
+
+            if (reservation != null) {
+                session.delete(reservation);
+                transaction.commit();
+            } else {
+                System.out.println("Reservation not found with id: " + id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
