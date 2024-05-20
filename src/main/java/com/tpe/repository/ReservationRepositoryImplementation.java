@@ -1,6 +1,7 @@
 package com.tpe.repository;
 
 import com.tpe.config.HibernateUtils;
+import com.tpe.exception.ReservationNotFoundException;
 import com.tpe.model.Reservation;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -34,8 +35,7 @@ public class ReservationRepositoryImplementation implements ReservationRepositor
             return reservation;
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ReservationNotFoundException("Issue Occurred during fetch Reservation");
         }
-
-        return null;
     }
 }
