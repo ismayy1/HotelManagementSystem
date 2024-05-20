@@ -332,8 +332,11 @@ public class HotelManagementSystemServiceClass {
                     reservationService.saveReservation();
                     break;
                 case 2:
-
-                    System.out.print("Enter the Guest ID to Reservation: ");
+                    // step 27 e: find reservation by ID
+                    System.out.print("Enter the Reservation ID to find: ");
+                    Long reservationId = scanner.nextLong();
+                    scanner.nextLine();
+                    reservationService.findReservationById(reservationId);
                     break;
                 case 3:
 
