@@ -1,6 +1,7 @@
 package com.tpe.service;
 
 import com.tpe.exception.GuestNotFoundException;
+import com.tpe.exception.ReservationNotFoundException;
 import com.tpe.exception.RoomNotFoundException;
 import com.tpe.model.Guest;
 import com.tpe.model.Reservation;
@@ -8,6 +9,7 @@ import com.tpe.model.Room;
 import com.tpe.repository.GuestRepository;
 import com.tpe.repository.ReservationRepository;
 import com.tpe.repository.RoomRepository;
+import org.hibernate.property.access.internal.PropertyAccessStrategyIndexBackRefImpl;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -106,7 +108,19 @@ public class ReservationServiceImplementation implements ReservationService {
     @Override
     public void deleteReservationById(Long id) {
 
-        reservationRepository.deleteReservationById(id);
+        try {
+            Reservation existingReservation = reservationRepository.deleteReservationById(id);
+
+            if (existingReservation == null) {
+                throw new ReservationNotFoundException("Reservation not found with id: " + id);
+            } else {
+                reservationRepository.deleteReservationById(id);
+                String DeleteMessage = "Reservation deleted Successfully...";
+                System.out.println(DeleteMessage);
+            }
+        } catch (ReservationNotFoundException r) {
+            System.out.println(r.getMessage());
+        }
 
     }
 }

@@ -62,7 +62,7 @@ public class ReservationRepositoryImplementation implements ReservationRepositor
     }
 
     @Override
-    public void deleteReservationById(Long id) {
+    public Reservation deleteReservationById(Long id) {
         try {
             Session session = HibernateUtils.getSessionFactory().openSession();
             Transaction transaction = session.beginTransaction();
@@ -78,5 +78,6 @@ public class ReservationRepositoryImplementation implements ReservationRepositor
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
