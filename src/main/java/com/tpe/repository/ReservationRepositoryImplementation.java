@@ -6,6 +6,8 @@ import com.tpe.model.Reservation;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class ReservationRepositoryImplementation implements ReservationRepository {
 
     // step 26 b: save reservation
@@ -37,6 +39,25 @@ public class ReservationRepositoryImplementation implements ReservationRepositor
         } catch (Exception e) {
             e.printStackTrace();
             throw new ReservationNotFoundException("Issue Occurred during fetch Reservation");
+        }
+    }
+
+    // step 28 b: display all reservation
+    @Override
+    public List<Reservation> findAllReservations() {
+
+        try {
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            String hql = "FROM Reservation";
+            List<Reservation> reservations = session.createQuery(hql, Reservation.class).getResultList();
+
+            if (reservations.isEmpty()) {
+                System.out.println("Reservation List is empty...");
+            }
+
+            return reservations;
+        } catch (Exception e) {
+            throw new ReservationNotFoundException("Failed to Fetch the Reservations");
         }
     }
 }
