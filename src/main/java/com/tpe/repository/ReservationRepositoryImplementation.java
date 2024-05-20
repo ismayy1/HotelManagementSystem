@@ -24,4 +24,18 @@ public class ReservationRepositoryImplementation implements ReservationRepositor
         }
         return null;
     }
+
+    @Override
+    public Reservation findReservationBuId(Long id) {
+
+        try {
+            Session session = HibernateUtils.getSessionFactory().openSession();
+            Reservation reservation = session.get(Reservation.class, id);
+            return reservation;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
