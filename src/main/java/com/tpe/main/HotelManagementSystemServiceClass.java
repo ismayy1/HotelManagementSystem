@@ -315,8 +315,8 @@ public class HotelManagementSystemServiceClass {
             System.out.println("==== Reservation Operations ====");
             System.out.println("1. Add a new Reservation");
             System.out.println("2. Find Reservation By ID");
-            System.out.println("3. Delete Reservation By ID");
-            System.out.println("4. Find All Reservation");
+            System.out.println("3. Find All Reservation");
+            System.out.println("4. Delete Reservation By ID");
             System.out.println("5. Return to Main Menu");
             System.out.print("Enter your choice: ");
 
@@ -339,14 +339,13 @@ public class HotelManagementSystemServiceClass {
                     reservationService.findReservationById(reservationId);
                     break;
                 case 3:
-
-                    System.out.println("==== Delete Reservation By ID ====");
-                    System.out.print("Enter the  Reservation to delete: ");
-
+                    System.out.println("==== Find All Reservations ====");
+                    reservationService.displayAllReservations();
                     break;
 
                 case 4:
-                    System.out.println("==== Find All Reservations ====");
+                    System.out.println("==== Delete Reservation By ID ====");
+                    System.out.print("Enter the  Reservation to delete: ");
 
                     break;
                 case  5 :

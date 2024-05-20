@@ -10,6 +10,7 @@ import com.tpe.repository.ReservationRepository;
 import com.tpe.repository.RoomRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class ReservationServiceImplementation implements ReservationService {
@@ -93,5 +94,12 @@ public class ReservationServiceImplementation implements ReservationService {
         } else {
             System.out.println("Reservation not Found with id: " + id);
         }
+    }
+
+    // step 28 d: display all reservations
+    @Override
+    public List<Reservation> displayAllReservations() {
+        List<Reservation> reservationList =  reservationRepository.findAllReservations();
+        return reservationList;
     }
 }
