@@ -86,6 +86,12 @@ public class ReservationServiceImplementation implements ReservationService {
     // step 27 b:
     @Override
     public void findReservationById(Long id) {
-        reservationRepository.findReservationBuId(id);
+        Reservation foundReservations = reservationRepository.findReservationBuId(id);
+
+        if (foundReservations != null) {
+            System.out.println(foundReservations);
+        } else {
+            System.out.println("Reservation not Found with id: " + id);
+        }
     }
 }
