@@ -7,4 +7,7 @@ public interface ReservationService {
     // step 26 c: save Reservation
     Reservation saveReservation();
 
+    // step 27 b: find reservation by id
+    void findReservationById (Long id);
+
 }

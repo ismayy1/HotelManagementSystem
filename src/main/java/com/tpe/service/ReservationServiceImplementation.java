@@ -82,4 +82,10 @@ public class ReservationServiceImplementation implements ReservationService {
 
         return null;
     }
+
+    // step 27 b:
+    @Override
+    public void findReservationById(Long id) {
+        reservationRepository.findReservationBuId(id);
+    }
 }
