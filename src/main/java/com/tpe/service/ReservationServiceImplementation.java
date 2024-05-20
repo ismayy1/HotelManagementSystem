@@ -102,4 +102,11 @@ public class ReservationServiceImplementation implements ReservationService {
         List<Reservation> reservationList =  reservationRepository.findAllReservations();
         return reservationList;
     }
+
+    @Override
+    public void deleteReservationById(Long id) {
+
+        reservationRepository.deleteReservationById(id);
+
+    }
 }

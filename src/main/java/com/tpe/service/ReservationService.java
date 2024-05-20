@@ -15,4 +15,6 @@ public interface ReservationService {
     // step 28 c: display all reservations
     List<Reservation> displayAllReservations();
 
+    void deleteReservationById (Long id);
+
 }
