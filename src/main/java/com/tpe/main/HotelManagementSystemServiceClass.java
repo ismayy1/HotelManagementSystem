@@ -346,6 +346,8 @@ public class HotelManagementSystemServiceClass {
                 case 4:
                     System.out.println("==== Delete Reservation By ID ====");
                     System.out.print("Enter the  Reservation to delete: ");
+                    Long reservationsId = scanner.nextLong();
+                    reservationService.deleteReservationById(reservationsId);
 
                     break;
                 case  5 :
